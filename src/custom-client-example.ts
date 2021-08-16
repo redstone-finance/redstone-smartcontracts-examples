@@ -42,7 +42,7 @@ async function customClientExample() {
   // read it here from file
   const changedSrc =
     `function handle(state, action) {
-   console.log("hello world from the new source:", SmartWeave.transaction.id);
+   console.log("\\n ===== Hello World from the new source:", SmartWeave.transaction.id);
    return {state}
   }`;
 
@@ -66,11 +66,14 @@ async function customClientExample() {
 
   console.log('swcClient created');
 
-  const { state, validity } = await swcClient.readState("OrO8n453N6bx921wtsEs-0OCImBLCItNU5oSbFKlFuU");
+  const providersRegistryContractTxId = "OrO8n453N6bx921wtsEs-0OCImBLCItNU5oSbFKlFuU";
 
-  console.log("Result", {
-    state, validity
-  })
+  // Reading contract's state using new client.
+  const { state, validity } = await swcClient.readState(providersRegistryContractTxId);
+
+  console.log('Result', {
+    state, validity,
+  });
 }
 
 customClientExample().catch((e) => {
