@@ -1,5 +1,5 @@
 # redstone-smartweave-examples
-Examples usages of the SmartWeave V2 SDK.
+Examples usages of the [SmartWeave V2 SDK](https://github.com/redstone-finance/SmartWeave/tree/ppe/redweave/src/v2).
 
 ### Installation
 `yarn install`
