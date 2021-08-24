@@ -3,3 +3,5 @@ node_modules/
 .idea
 src/cache/
 lib/
+yalc.lock
+.yalc
