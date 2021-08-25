@@ -339,8 +339,10 @@ readable-stream@^3.4.0:
     string_decoder "^1.1.1"
     util-deprecate "^1.0.1"
 
-"redstone-smartweave@file:.yalc/redstone-smartweave":
-  version "0.0.1"
+redstone-smartweave@^0.0.2:
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/redstone-smartweave/-/redstone-smartweave-0.0.2.tgz#baa45ea55a7b9b62cf121678f9d175eadf7a7a30"
+  integrity sha512-wLPQSyZjp6v9HoGN9c4AqPEwcnwxkOMHTKss7WxRoMBkilz6KaXQN26BrzggaaAp9mBhIYf9aDric0OJsTQmPw==
   dependencies:
     "@weavery/clarity" "^0.1.5"
     arweave "^1.10.16"
