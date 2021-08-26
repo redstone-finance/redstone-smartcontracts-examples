@@ -11,6 +11,9 @@ async function viewStateExample() {
     logging: false, // Enable network request logging
   });
 
+  // note: any jwk should work in this case
+  const jwk = readJSON("../redstone-node/.secrets/redstone-dev-jwk.json");
+
   LoggerFactory.INST.logLevel("trace", "HandlerBasedContract");
   LoggerFactory.INST.logLevel("trace", "HandlerExecutorFactory");
 
@@ -19,18 +22,14 @@ async function viewStateExample() {
   const smartweave = SmartWeaveNodeFactory.memCached(arweave);
 
   // connecting to a given contract
-  const providersRegistryContract = smartweave.contract(
-    "OrO8n453N6bx921wtsEs-0OCImBLCItNU5oSbFKlFuU"
-  );
-
-  // note: any jwk should work in this case
-  const jwk = readJSON("../redstone-node/.secrets/redstone-dev-jwk.json");
-  // connecting wallet to a contract. It is required before performing any "viewState" ("interactRead" in the current SDK)
-  // calling "viewState" without connecting to a wallet first will cause a runtime error.
-  providersRegistryContract.connect(jwk);
+  const providersRegistryContract = smartweave
+    .contract("OrO8n453N6bx921wtsEs-0OCImBLCItNU5oSbFKlFuU")
+    // connecting wallet to a contract. It is required before performing any "viewState" ("interactRead" in the current SDK).
+    // calling "viewState" without connecting to a wallet first will cause a runtime error.
+    .connect(jwk);
 
   // since we're using "TYPE"Script here, you can opt in to use strongly typed Input and View.
-  const { result, type } = await providersRegistryContract.viewState<
+  const { result } = await providersRegistryContract.viewState<
     ProvidersRegistryInput,
     ProviderResult
   >({
@@ -41,7 +40,7 @@ async function viewStateExample() {
     },
   });
 
-  // now you can use result in a typed safe way, with suggestions from your favourite IDE, etc.
+  // now you can use result in a type safe way, with suggestions from your favourite IDE, etc.
   console.log(result.provider.profile.name);
   console.log(result.provider.manifests[0]);
 }
