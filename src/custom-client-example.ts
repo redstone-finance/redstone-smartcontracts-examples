@@ -20,10 +20,6 @@ interface ProvidersRegistryState extends EvolveCompatibleState {
   contractAdmins: string[];
 }
 
-export function timeout(ms: number): Promise<any> {
-  return new Promise((resolve) => setTimeout(() => resolve("timeout"), ms));
-}
-
 async function customClientExample() {
   const arweave = Arweave.init({
     host: "arweave.net", // Hostname or IP address for a Arweave host
@@ -33,8 +29,8 @@ async function customClientExample() {
     logging: false, // Enable network request logging
   });
 
-  // you change logging level, both globally for the whole new SmartWeave SDK, or individually, for given modules
-  // currently, default log level is 'debug'
+  // You can change logging level, both globally for the whole new SmartWeave SDK, or individually, for given modules.
+  // Currently, default log level is 'debug'.
   // tslog library is used for the node env., and simple console.log wrapper for the web env.
   LoggerFactory.INST.logLevel("info");
   LoggerFactory.INST.logLevel("silly", "DefaultStateEvaluator");
@@ -45,12 +41,12 @@ async function customClientExample() {
     "OrO8n453N6bx921wtsEs-0OCImBLCItNU5oSbFKlFuU";
 
   // ContractInteractionsLoader module is responsible for loading contract's interactions.
-  // There is also a simple wrapper around base implementation, that adds caching features - CacheableContractInteractionsLoader
+  // There is also a simple wrapper around base implementation, that adds caching features - CacheableContractInteractionsLoader.
   // It's up to you to decide which one to use - or maybe create a new one, that will further optimise loading interactions
   // - by simply wrapping the base implementation.
   const contractInteractionsLoader = new ContractInteractionsLoader(arweave);
 
-  // since there's still no consensus (;-)) which sorting alg. should be used in the current SDK -
+  // Since there's still no consensus (;-)) on which sorting alg. should be used in the current SDK -
   // (see https://github.com/ArweaveTeam/SmartWeave/pull/82) - you can choose on your own!
   // (there's also BlockHeightInteractionsSorter available)
   const lexicographicalInteractionsSorter =
