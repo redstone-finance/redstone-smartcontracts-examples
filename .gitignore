@@ -5,3 +5,4 @@ src/cache/
 lib/
 yalc.lock
 .yalc
+yarn-error.log
