@@ -189,10 +189,10 @@ minimist@^1.2.0, minimist@^1.2.5:
   resolved "https://registry.yarnpkg.com/minimist/-/minimist-1.2.5.tgz#67d66014b66a6a8aaa0c083c5fd58df4e4e97602"
   integrity sha512-FM9nNUYrRBAELZQT3xeZQ7fmMOBg6nWNmJKTcgsJeaLstP/UODVpGsr5OhXhhXg6f+qtJ8uiZ+PUxkDWcgIXLw==
 
-redstone-smartweave@0.2.2-alpha.1:
-  version "0.2.2-alpha.1"
-  resolved "https://registry.yarnpkg.com/redstone-smartweave/-/redstone-smartweave-0.2.2-alpha.1.tgz#f808fc0358bd548fd99058422c3c6862f5319cd6"
-  integrity sha512-6kpSuvxXtPNAEr2yk49vmCTtg9NywD2E3M6X4l7KfvsoHMX1SF0ynldcIV/l2y0oY/TfwgEFAg99AVDby+qcgQ==
+redstone-smartweave@v0.3.0-alpha.1:
+  version "0.3.0-alpha.1"
+  resolved "https://registry.yarnpkg.com/redstone-smartweave/-/redstone-smartweave-0.3.0-alpha.1.tgz#6b74702630d27afe2bba9e2d6ba8f30fc9e8170e"
+  integrity sha512-+0Fdp8GJ+uKPo/4Hucw1N6JdTtwJLYpW1GZZZGW8xBzHJYvuoUHyyVEwFYfQs3aYQ2Lwd2P2QtOBDAZ7Pctidw==
   dependencies:
     "@weavery/clarity" "^0.1.5"
     arweave "^1.10.16"

@@ -24,8 +24,9 @@ async function viewStateExample() {
   // connecting to a given contract
   const providersRegistryContract = smartweave
     .contract("OrO8n453N6bx921wtsEs-0OCImBLCItNU5oSbFKlFuU")
-    // connecting wallet to a contract. It is required before performing any "viewState" ("interactRead" in the current SDK).
-    // calling "viewState" without connecting to a wallet first will cause a runtime error.
+    // connecting wallet to a contract.
+    // Depending on the contract's code, this may be required before
+    // calling viewState ("interactRead")
     .connect(jwk);
 
   // since we're using "TYPE"Script here, you can opt in to use strongly typed Input and View.
