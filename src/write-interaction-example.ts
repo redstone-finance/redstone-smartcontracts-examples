@@ -11,8 +11,8 @@ async function writeExample() {
     logging: false, // Enable network request logging
   });
 
-  // note: any jwk should work in this case
-  const jwk = readJSON("../redstone-node/.secrets/redstone-dev-jwk.json");
+  // note: any jwk with sam ARs should work in this case
+  const jwk = readJSON("../redstone-node/.secrets/redstone-jwk.json");
 
   LoggerFactory.INST.logLevel("trace", "HandlerBasedContract");
   LoggerFactory.INST.logLevel("trace", "HandlerExecutorFactory");
