@@ -11,6 +11,7 @@ async function realLifeExample() {
     logging: false,
   });
 
+  // use your own jwk here
   const jwk = readJSON("../redstone-node/.secrets/redstone-dev-jwk.json");
 
   LoggerFactory.INST.logLevel("debug");

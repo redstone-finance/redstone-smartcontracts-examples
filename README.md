@@ -12,3 +12,6 @@ See comments inside examples for further details.
 
 We recommend reading the `src/custom-client-example.ts` first - as it 
 explains all the modules of the new SDK.
+
+Keep in mind that for examples that are using jwk, you need to 
+supply proper path to your own jwk.
