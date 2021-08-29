@@ -4,11 +4,11 @@ import fs from "fs";
 
 async function viewStateExample() {
   const arweave = Arweave.init({
-    host: "arweave.net", // CloudFront based Arweave cache
-    port: 443, // Port
-    protocol: "https", // Network protocol http or https
-    timeout: 20000, // Network request timeouts in milliseconds
-    logging: false, // Enable network request logging
+    host: "arweave.net",
+    port: 443,
+    protocol: "https",
+    timeout: 20000,
+    logging: false,
   });
 
   // note: any jwk should work in this case
