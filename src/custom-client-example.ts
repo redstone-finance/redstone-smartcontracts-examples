@@ -15,11 +15,11 @@ import {
   SmartWeave,
 } from "redstone-smartweave";
 
-// note: this ofc. should be imported from the given SmartContract source code.
-interface ProvidersRegistryState extends EvolveCompatibleState {
-  contractAdmins: string[];
-}
-
+/**
+ * This example shows the process of creating a fully customized
+ * SmartWeave instance. It also explains the core modules of the
+ * SDK.
+ */
 async function customClientExample() {
   const arweave = Arweave.init({
     host: "arweave.net",
@@ -119,3 +119,9 @@ async function customClientExample() {
 customClientExample().catch((e) => {
   console.error(e);
 });
+
+
+// note: this ofc. should be imported from the given SmartContract source code.
+interface ProvidersRegistryState extends EvolveCompatibleState {
+  contractAdmins: string[];
+}

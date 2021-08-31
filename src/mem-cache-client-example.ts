@@ -1,6 +1,10 @@
 import Arweave from "arweave";
 import { SmartWeaveNodeFactory } from "redstone-smartweave";
 
+/**
+ * This example shows the process of creating a memCached
+ * SmartWeave instance - and using it to read contract's state.
+ */
 async function memCacheClientExample() {
   const arweave = Arweave.init({
     host: "arweave.net",

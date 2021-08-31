@@ -1,7 +1,12 @@
 import Arweave from "arweave";
 import { LoggerFactory, SmartWeaveNodeFactory } from "redstone-smartweave";
 import fs from "fs";
+import { readJSON } from './_utils';
 
+/**
+ * This example shows how to perform a (typed) viewState
+ * ("interactRead" from the V1 SDK) call to a contract.
+ */
 async function viewStateExample() {
   const arweave = Arweave.init({
     host: "arweave.net",
@@ -50,17 +55,7 @@ viewStateExample().catch((e) => {
   console.log(e);
 });
 
-function readJSON(path) {
-  const content = fs.readFileSync(path, "utf-8");
-  try {
-    return JSON.parse(content);
-  } catch (e) {
-    throw new Error(`File "${path}" does not contain a valid JSON`);
-  }
-}
-
 // in a real world usage - the types below should be simply imported from the given smart contract library
-
 interface ProvidersRegistryInput {
   function: string;
   data: ProvidersDataInput;

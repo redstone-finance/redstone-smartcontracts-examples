@@ -2,6 +2,10 @@ import Arweave from "arweave";
 import { SmartWeaveNodeFactory } from "redstone-smartweave";
 import path from "path";
 
+/**
+ * This example shows the process of creating a fileCached
+ * SmartWeave instance - and using it to read contract's state.
+ */
 async function fileCacheClientExample() {
   const arweave = Arweave.init({
     host: "arweave.net",

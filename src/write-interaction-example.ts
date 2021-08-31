@@ -1,7 +1,13 @@
 import Arweave from "arweave";
 import { LoggerFactory, SmartWeaveNodeFactory } from "redstone-smartweave";
 import fs from "fs";
+import { readJSON } from './_utils';
 
+
+/**
+ * This example shows how to perform a writeInteraction
+ * ("interactWrite" from the V1 SDK) call to a contract.
+ */
 async function writeExample() {
   const arweave = Arweave.init({
     host: "arweave.net",
@@ -40,18 +46,25 @@ async function writeExample() {
     },
   });
 
+  // or you can use fluent API, and:
+  /*
+  const result = await smartweave
+    .contract("OrO8n453N6bx921wtsEs-0OCImBLCItNU5oSbFKlFuU")
+    .connect(jwk)
+    .setEvaluationOptions({
+      waitForConfirmation: true,
+    })
+    .writeInteraction({
+      function: "transfer",
+      data: {
+        target: "fake",
+        qty: 15100900,
+      },
+    });
+   */
   console.log("New interaction id:", result);
 }
 
 writeExample().catch((e) => {
   console.log(e);
 });
-
-function readJSON(path) {
-  const content = fs.readFileSync(path, "utf-8");
-  try {
-    return JSON.parse(content);
-  } catch (e) {
-    throw new Error(`File "${path}" does not contain a valid JSON`);
-  }
-}

@@ -1,7 +1,14 @@
-import Arweave from "arweave";
-import { LoggerFactory, SmartWeaveNodeFactory } from "redstone-smartweave";
-import fs from "fs";
+import Arweave from 'arweave';
+import { LoggerFactory, SmartWeaveNodeFactory } from 'redstone-smartweave';
+import { readJSON } from './_utils';
 
+/**
+ * a more real-life example - from the RedStone Node.
+ * first we connect to the "contracts-registry" contract
+ * to obtain the current "providers-registry" contract tx id.
+ * Then we connect to the "providers-registry" contract
+ * to load manifest for the given provider.
+ */
 async function realLifeExample() {
   const arweave = Arweave.init({
     host: "arweave.net",
@@ -19,12 +26,6 @@ async function realLifeExample() {
   // using SmartWeaveNodeFactory to quickly obtain fully configured, mem-cacheable SmartWeave instance
   // see custom-client-example.ts for a more detailed explanation of all the core modules of the SmartWeave instance.
   const smartweave = SmartWeaveNodeFactory.memCached(arweave);
-
-  // a more real-life example - from the RedStone Node.
-  // first we connect to the "contracts-registry" contract
-  // to obtain the current "providers-registry" contract tx id.
-  // Then we connect to the "providers-registry" contract
-  // to load manifest for the given provider.
 
   const registryContract = smartweave
     .contract("XQkGzXG6YknJyy-YbakEZvQKAWkW2_aPRhc3ShC8lyA")
@@ -60,12 +61,3 @@ async function realLifeExample() {
 realLifeExample().catch((e) => {
   console.log(e);
 });
-
-function readJSON(path) {
-  const content = fs.readFileSync(path, "utf-8");
-  try {
-    return JSON.parse(content);
-  } catch (e) {
-    throw new Error(`File "${path}" does not contain a valid JSON`);
-  }
-}
