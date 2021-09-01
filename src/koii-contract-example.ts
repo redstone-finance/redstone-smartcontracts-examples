@@ -9,7 +9,7 @@ import path from "path";
  */
 async function memCacheClientExample() {
   const arweave = Arweave.init({
-    host: "arweave.net",
+    host: "dh48zl0solow5.cloudfront.net",
     port: 443,
     protocol: "https",
     timeout: 20000,
