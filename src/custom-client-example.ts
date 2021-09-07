@@ -14,6 +14,7 @@ import {
   MemCache,
   SmartWeave,
 } from "redstone-smartweave";
+import { TsLogFactory } from 'redstone-smartweave/lib/cjs/logging/node/TsLogFactory';
 
 /**
  * This example shows the process of creating a fully customized
@@ -29,9 +30,13 @@ async function customClientExample() {
     logging: false,
   });
 
-  // You can change logging level, both globally for the whole new SmartWeave SDK, or individually, for given modules.
-  // Currently, default log level is 'debug'.
-  // tslog library is used for the node env., and simple console.log wrapper for the web env.
+  // You can change logging level, both globally for the whole new SmartWeave SDK, or individually,
+  // for given modules.
+  // Currently, default log level is 'fatal'.
+  // To get a better control over logging configuration (it works only for node env),
+  // you can opt-in to use TsLoggerFactory (a wrapper around "tslog" library).
+  // You can also supply your own logger - implementation of the ILoggerFactory interface.
+  LoggerFactory.use(new TsLogFactory());
   LoggerFactory.INST.logLevel("info");
   LoggerFactory.INST.logLevel("silly", "DefaultStateEvaluator");
   LoggerFactory.INST.logLevel("debug", "ContractInteractionsLoader");
