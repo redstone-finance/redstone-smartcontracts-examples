@@ -1,27 +1,42 @@
 export function handle(state, action) {
 
+  function getBalance(address) {
+    if (!address) {
+      throw new ContractError("Can not get balance for an empty address");
+    } else {
+      return state.balances[address] || 0;
+    }
+  }
+
   switch (action.input.function) {
 
     case "name":
-      return state.name;
+      return { result: state.name };
 
     case "symbol":
-      return state.symbol;
+      return { result: state.symbol };
 
     case "totalSupply":
-      return state.totalSupply;
+      return { result: state.totalSupply };
 
     case "balanceOf":
-      return { result: state.balances[action.input.data.address] || 0 };
+      return { result: getBalance(action.input.data.address) };
 
     case "transfer":
       const fromAddress = action.caller;
       const toAddress = action.input.data.to;
       const value = action.input.data.amount;
-      // TODO: implement
+      const senderBalance = getBalance(fromAddress);
+      if (senderBalance < value) {
+        throw new ContractError("Insufficient funds");
+      }
+      state.balances[fromAddress] = senderBalance - value;
+      state.balances[toAddress] = getBalance(toAddress) + value;
+      return { state };
 
     default:
-      throw new Error(`Unsupported contract function: ${functionName}`);
+      throw new ContractError(
+        `Unsupported contract function: ${functionName}`);
 
   }
 }

@@ -9,7 +9,8 @@ export function handle(state, action) {
       return { result: state.counter };
 
     default:
-      throw new Error(`Unsupported contract function: ${functionName}`);
+      throw new ContractError(
+        `Unsupported contract function: ${functionName}`);
 
   }
 }
