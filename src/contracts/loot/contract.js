@@ -1,24 +1,26 @@
 export async function handle(state, action) {
 
-  const COLORS = ["green", "red", "yellow", "blue", "black", "brown", "pink"];
-  const MATERIALS = ["golden", "wooden", "silvern", "fiery", "diamond", "platinum", "palladium"];
-  const ITEMS = ["sword", "shield", "robe", "stone", "crown", "katana", "gragon", "ring"];
+  const COLORS = ["green", "red", "yellow", "blue", "black", "brown", "pink", "orange", "purple", "gray"];
+  const MATERIALS = ["gold", "wood", "silver", "fire", "diamond", "platinum", "palladium", "bronze", "lithium", "titanium"];
+  const ITEMS = ["sword", "shield", "robe", "stone", "crown", "katana", "dragon", "ring", "axe", "hammer"];
 
   function bigIntFromBytes(byteArr) {
     const hexString = byteArr.toString("hex");
-    return BigInt("0x" + hexString) % BigInt(Number.MAX_SAFE_INTEGER);
+    return BigInt("0x" + hexString);
   }
 
   // This function calculates a pseudo-random int value,
   // which is less then the `max` argument.
-  // Note! This method should not be used more than once
-  // in a single contract interaction
-  async function getRandomIntNumber(max) {
+  // Note! To correctly generate several random numbers in
+  // a single contract interaction, you should pass different
+  // values for the `uniqueValue` argument
+  async function getRandomIntNumber(max, uniqueValue = "") {
     const pseudoRandomData = SmartWeave.utils.stringToBuffer(
       SmartWeave.block.height
       + SmartWeave.block.timestamp
       + SmartWeave.transaction.id
       + action.caller
+      + uniqueValue
     );
     const hashBytes = await SmartWeave.crypto.hash(pseudoRandomData);
     const randomBigInt = bigIntFromBytes(hashBytes);
@@ -30,11 +32,14 @@ export async function handle(state, action) {
     case "name":
       return { result: state.name };
 
-    case "symbol":
-      return { result: state.symbol };
-
-    case "allAssets":
+    case "generatedAssets":
       return { result: Object.keys(state.assets) };
+
+    case "assetsLeft":
+      const allAssetsCount = COLORS.length * MATERIALS.length * ITEMS.length;
+      const generatedAssetsCount = Object.keys(state.assets).length;
+      const assetsLeftCount = allAssetsCount - generatedAssetsCount;
+      return { result: assetsLeftCount };
 
     case "getOwner":
       const asset = action.input.data.asset;
@@ -45,15 +50,15 @@ export async function handle(state, action) {
       }
 
     case "generate":
-      const allAssetsCount = COLORS.length * MATERIALS.length * ITEMS.length;
-      const assetIndex = await getRandomIntNumber(allAssetsCount);
-      const colorIndex = assetIndex % COLORS.length;
-      const materialIndex = Math.floor(assetIndex / COLORS.length) % MATERIALS.length;
-      const itemIndex = Math.floor(assetIndex / (COLORS.length * MATERIALS.length)) % ITEMS.length;
+      const colorIndex = await getRandomIntNumber(COLORS.length, "color");
+      const materialIndex = await getRandomIntNumber(MATERIALS.length, "material");
+      const itemIndex = await getRandomIntNumber(ITEMS.length, "item");
       const asset = COLORS[colorIndex] + " " + MATERIALS[materialIndex] + " " + ITEMS[itemIndex];
       if (!state.assets[asset]) {
-        // If the asset wasn't generated yet, create it and give it to caller
         state.assets[asset] = action.caller;
+      } else {
+        throw new ContractError(
+          `Generated item (${asset}) is already owned by: ${state.assets[asset]}`);
       }
       return { state };
 
