@@ -3,9 +3,18 @@ export function handle(state, action) {
   const MATERIALS = ["golden", "wooden", "silvern", "fiery", "diamond"];
   const ITEMS = ["sword", "shield", "robe", "stone", "crown", "katana", "gragon", "ring"];
 
+  // This function removes all non-digits from string
+  // Then it converts to number
+  // If the result string is empty, it returns 0
+  function getNumberFromString(str) {
+    return str.replace(/\D/g, "") || 0;
+  }
+
   function getRandomIntNumber(max) {
-    // const bigNumber = SmartWeave.transaction.id + action.caller + SmartWeave.block.timestamp + SmartWeave.block.height;
-    const bigNumber = SmartWeave.block.timestamp + SmartWeave.block.height;
+    const bigNumber = SmartWeave.block.timestamp
+      + SmartWeave.block.height
+      + getNumberFromString(SmartWeave.transaction.id)
+      + getNumberFromString(action.caller);
     return Math.round(bigNumber % (max + 1));
   }
 
