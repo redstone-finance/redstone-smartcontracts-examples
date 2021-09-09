@@ -1,0 +1,8 @@
+{
+  "name": "Test token",
+  "symbol": "TEST",
+  "totalSupply": 1000000000,
+  "balances": {
+    "33F0QHcb22W7LwWR1iRC8Az1ntZG09XQ03YWuw2ABqA": 1000000000
+  }
+}
