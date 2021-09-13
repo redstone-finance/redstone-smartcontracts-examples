@@ -35,10 +35,7 @@ async function viewStateExample() {
     .connect(jwk);
 
   // since we're using "TYPE"Script here, you can opt in to use strongly typed Input and View.
-  const { result } = await providersRegistryContract.viewState<
-    ProvidersRegistryInput,
-    ProviderResult
-  >({
+  const { result } = await providersRegistryContract.viewState({
     function: "providerData",
     data: {
       providerId: "33F0QHcb22W7LwWR1iRC8Az1ntZG09XQ03YWuw2ABqA",
