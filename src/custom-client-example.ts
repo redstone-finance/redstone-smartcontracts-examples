@@ -5,15 +5,14 @@ import {
   ContractDefinitionLoader,
   ContractInteractionsLoader,
   DebuggableExecutorFactory,
-  EvalStateResult,
-  EvolveCompatibleState,
+  EvalStateResult, EvolveState,
   HandlerExecutorFactory,
   LexicographicalInteractionsSorter,
   LoggerFactory,
   MemBlockHeightSwCache,
   MemCache,
-  SmartWeave,
-} from "redstone-smartweave";
+  SmartWeave
+} from 'redstone-smartweave';
 import { TsLogFactory } from 'redstone-smartweave/lib/cjs/logging/node/TsLogFactory';
 
 /**
@@ -127,6 +126,6 @@ customClientExample().catch((e) => {
 
 
 // note: this ofc. should be imported from the given SmartContract source code.
-interface ProvidersRegistryState extends EvolveCompatibleState {
+interface ProvidersRegistryState extends EvolveState {
   contractAdmins: string[];
 }
