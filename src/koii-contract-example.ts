@@ -1,7 +1,8 @@
 import Arweave from "arweave";
-import { SmartWeaveNodeFactory } from "redstone-smartweave";
+import { LoggerFactory, SmartWeaveNodeFactory } from 'redstone-smartweave';
 import * as fs from "fs";
 import path from "path";
+import { TsLogFactory } from 'redstone-smartweave/lib/cjs/logging/node/TsLogFactory';
 
 /**
  * This example shows the process of creating a memCached
@@ -19,10 +20,16 @@ async function memCacheClientExample() {
   const koiiContractTxId = "LppT1p3wri4FCKzW5buohsjWxpJHC58_rgIO-rYTMB8";
   // using SmartWeaveNodeFactory to quickly obtain fully configured, mem-cacheable SmartWeave instance
   // see custom-client-example.ts for a more detailed explanation of all the core modules of the SmartWeave instance.
+
+  LoggerFactory.use(new TsLogFactory());
+  LoggerFactory.INST.logLevel('debug');
   const smartweave = SmartWeaveNodeFactory.memCached(arweave);
 
   // connecting to a given contract
-  const koiiContract = smartweave.contract(koiiContractTxId);
+  const koiiContract = smartweave.contract(koiiContractTxId)
+    .setEvaluationOptions({
+      ignoreExceptions: false
+    });
 
   const { state, validity } = await koiiContract.readState();
 
