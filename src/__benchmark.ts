@@ -20,7 +20,7 @@ async function benchmark() {
   // available here: https://dh48zl0solow5.cloudfront.net
   // - to further speed up 'GET' calls to Arweave.
   const arweave = Arweave.init({
-    host: 'dh48zl0solow5.cloudfront.net', // Hostname or IP address for a Arweave host
+    host: 'arweave.net', // Hostname or IP address for a Arweave host
     port: 443, // Port
     protocol: 'https', // Network protocol http or https
     timeout: 60000, // Network request timeouts in milliseconds
