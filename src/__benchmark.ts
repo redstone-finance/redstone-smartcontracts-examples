@@ -36,6 +36,7 @@ async function benchmark() {
   LoggerFactory.INST.logLevel("info", "benchmark");
 
   // Contracts under test:
+  // 38TR3D8BxlPTc89NOW67IkQQUPR8jDLaJNdYv-4wWfM
   // usjm4PCxUd5mtaon7zc97-dt-3qf67yPyqgzLnLqk5A
   // OrO8n453N6bx921wtsEs-0OCImBLCItNU5oSbFKlFuU
   // S3a-4VByScX0vtjmh5oZPs8kHTNn-8UPFVOkm2RprDc
