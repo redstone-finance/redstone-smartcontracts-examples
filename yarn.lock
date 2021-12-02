@@ -2736,19 +2736,19 @@ rechoir@0.7.0:
   dependencies:
     resolve "^1.9.0"
 
-redstone-smartweave@0.3.10-alpha.15:
-  version "0.3.10-alpha.15"
-  resolved "https://registry.yarnpkg.com/redstone-smartweave/-/redstone-smartweave-0.3.10-alpha.15.tgz#da5bdd58a3eaf5283488b0cb6c2185f5f3ffbd48"
-  integrity sha512-41B70AVcGN+CWUgd5gtiIse+Ff/Y0owrshKPsK6XMw5qR77sm/UR+H95F5aTQIUH6c9lubeOUqLqM1hB+Rsu9Q==
+redstone-smartweave@0.4.0:
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/redstone-smartweave/-/redstone-smartweave-0.4.0.tgz#abfc91bedc632a62673271bcef5cd8acd337ae46"
+  integrity sha512-jwRrgylqudvynTAU/jMTfiNGrob6bDiGH0445j9REAiERWkHuQK16IBDYZ4MSJbajYJLoZyvBQswlrWjol0blA==
   dependencies:
     "@weavery/clarity" "^0.1.5"
     arweave "^1.10.16"
     arweave-multihost "^0.1.0"
     axios "^0.21.4"
     bignumber.js "^9.0.1"
-    bson "^4.5.0"
     json-beautify "^1.1.1"
-    tslog "^3.2.1"
+    lodash "^4.17.21"
+    tslog "^3.2.2"
 
 redstone-smartweave@^0.3.8-alpha.1:
   version "0.3.8-alpha.1"
@@ -2991,6 +2991,14 @@ source-map-support@^0.5.19:
   version "0.5.19"
   resolved "https://registry.yarnpkg.com/source-map-support/-/source-map-support-0.5.19.tgz#a98b62f86dcaf4f67399648c085291ab9e8fed61"
   integrity sha512-Wonm7zOCIJzBGQdB+thsPar0kYuCIzYvxZwlBa87yi/Mdjv7Tip2cyVbLj5o0cFPN4EVkuTwb3GDDyUx2DGnGw==
+  dependencies:
+    buffer-from "^1.0.0"
+    source-map "^0.6.0"
+
+source-map-support@^0.5.21:
+  version "0.5.21"
+  resolved "https://registry.yarnpkg.com/source-map-support/-/source-map-support-0.5.21.tgz#04fe7c7f9e1ed2d662233c28cb2b35b9f63f6e4f"
+  integrity sha512-uBHU3L3czsIyYXKX88fdrGovxdSCoTGDRZ6SYXtSRxLZUzHg5P/66Ht6uoUlHu9EZod+inXhKo3qQgwXUT/y1w==
   dependencies:
     buffer-from "^1.0.0"
     source-map "^0.6.0"
@@ -3351,6 +3359,13 @@ tslog@^3.2.1:
   integrity sha512-m8wAtox9wt+h6UDcN1WAQnYwRDOGhMIOp+GAuuufo8T8qKuu726i2W3r47BrA69goVOwgUkp5YwDTvAxTktvPg==
   dependencies:
     source-map-support "^0.5.19"
+
+tslog@^3.2.2:
+  version "3.3.0"
+  resolved "https://registry.yarnpkg.com/tslog/-/tslog-3.3.0.tgz#868d90a80b915087de18d810d942a6f763bd6cd1"
+  integrity sha512-NP/9xDON5rv8zCS/jDpvi1V+Oplpwd86BBscdEbK6STWRxsSuott33tqly+RCSkFrLVrCuF9qAJKZTPDaR+HbQ==
+  dependencies:
+    source-map-support "^0.5.21"
 
 tsscmp@1.0.6:
   version "1.0.6"
