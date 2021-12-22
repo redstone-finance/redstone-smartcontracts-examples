@@ -9,7 +9,7 @@
   "dependencies": {
     "@kyve/query": "0.0.0-alpha.41",
     "arweave": "^1.10.16",
-    "redstone-smartweave": "0.4.1",
+    "redstone-smartweave": "0.4.7",
     "smartweave": "0.4.42",
     "ts-node": "^10.0.0",
     "tsconfig-paths": "^3.10.1",

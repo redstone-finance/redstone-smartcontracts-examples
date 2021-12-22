@@ -1093,6 +1093,11 @@ colorette@1.2.1:
   resolved "https://registry.yarnpkg.com/colorette/-/colorette-1.2.1.tgz#4d0b921325c14faf92633086a536db6e89564b1b"
   integrity sha512-puCDz0CzydiSYOrnXpz/PKd69zRrribezjtE9yd4zvytoRc8+RY/KJPvtPFKZS3E3wP6neGyMe0vOTlHO5L3Pw==
 
+colorette@2.0.16:
+  version "2.0.16"
+  resolved "https://registry.yarnpkg.com/colorette/-/colorette-2.0.16.tgz#713b9af84fdb000139f04546bd4a93f62a5085da"
+  integrity sha512-hUewv7oMjCp+wkBv5Rm0v87eJhq4woh5rSR+42YSQJKecCqgIqNkZ6lAlQms/BwHPJA5NKMRlpxPRv0n8HQW6g==
+
 combined-stream2@^1.1.2:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/combined-stream2/-/combined-stream2-1.1.2.tgz#f6e14b7a015666f8c7b0a1fac506240164ac3570"
@@ -2001,6 +2006,14 @@ isexe@^2.0.0:
   resolved "https://registry.yarnpkg.com/isexe/-/isexe-2.0.0.tgz#e8fbf374dc556ff8947a10dcb0572d633f2cfa10"
   integrity sha1-6PvzdNxVb/iUehDcsFctYz8s+hA=
 
+isomorphic-fetch@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/isomorphic-fetch/-/isomorphic-fetch-3.0.0.tgz#0267b005049046d2421207215d45d6a262b8b8b4"
+  integrity sha512-qvUtwJ3j6qwsF3jLxkZ72qCgjMysPzDfeV240JHiGZsANBYd+EEuu35v7dfrJ9Up0Ak07D7GGSkGhCHTqg/5wA==
+  dependencies:
+    node-fetch "^2.6.1"
+    whatwg-fetch "^3.4.1"
+
 isstream@~0.1.2:
   version "0.1.2"
   resolved "https://registry.yarnpkg.com/isstream/-/isstream-0.1.2.tgz#47e63f7af55afa6f92e1500e690eb8b8529c099a"
@@ -2059,6 +2072,25 @@ keygrip@~1.1.0:
   integrity sha512-iYSchDJ+liQ8iwbSI2QqsQOvqv58eJCEanyJPJi+Khyu8smkcKSFUCbPwzFcL7YVtZ6eONjqRX/38caJ7QjRAQ==
   dependencies:
     tsscmp "1.0.6"
+
+knex@^0.95.14:
+  version "0.95.15"
+  resolved "https://registry.yarnpkg.com/knex/-/knex-0.95.15.tgz#39d7e7110a6e2ad7de5d673d2dea94143015e0e7"
+  integrity sha512-Loq6WgHaWlmL2bfZGWPsy4l8xw4pOE+tmLGkPG0auBppxpI0UcK+GYCycJcqz9W54f2LiGewkCVLBm3Wq4ur/w==
+  dependencies:
+    colorette "2.0.16"
+    commander "^7.1.0"
+    debug "4.3.2"
+    escalade "^3.1.1"
+    esm "^3.2.25"
+    getopts "2.2.5"
+    interpret "^2.2.0"
+    lodash "^4.17.21"
+    pg-connection-string "2.5.0"
+    rechoir "0.7.0"
+    resolve-from "^5.0.0"
+    tarn "^3.0.1"
+    tildify "2.0.0"
 
 knex@^0.95.6:
   version "0.95.10"
@@ -2736,17 +2768,19 @@ rechoir@0.7.0:
   dependencies:
     resolve "^1.9.0"
 
-redstone-smartweave@0.4.1:
-  version "0.4.1"
-  resolved "https://registry.yarnpkg.com/redstone-smartweave/-/redstone-smartweave-0.4.1.tgz#d3dd2211acfaadedd98dd86195a62585d863b974"
-  integrity sha512-Ut9iBdl7V1yC4OgaMuUgG2DLazdUysb5BvOCxmhXFnEbufxTER3/IVPH53jphDg/DOc56inx0EKiTyC55MjKqg==
+redstone-smartweave@0.4.7:
+  version "0.4.7"
+  resolved "https://registry.yarnpkg.com/redstone-smartweave/-/redstone-smartweave-0.4.7.tgz#dcc28d156fce6968e19cb9d15b5649962e37b426"
+  integrity sha512-EugcpPxlP3jPC7G2pZk7LRGcSbNyEWVcxp4PCODSj2jjF9dm+t0R6XwR3ZyhdgU93MRmn0nJbRp/IZXOXKf6Wg==
   dependencies:
     "@weavery/clarity" "^0.1.5"
     arweave "^1.10.16"
     arweave-multihost "^0.1.0"
     axios "^0.21.4"
     bignumber.js "^9.0.1"
+    isomorphic-fetch "^3.0.0"
     json-beautify "^1.1.1"
+    knex "^0.95.14"
     lodash "^4.17.21"
     tslog "^3.2.2"
 
@@ -3485,6 +3519,11 @@ wcwidth@^1.0.1:
   integrity sha1-8LDc+RW8X/FSivrbLA4XtTLaL+g=
   dependencies:
     defaults "^1.0.3"
+
+whatwg-fetch@^3.4.1:
+  version "3.6.2"
+  resolved "https://registry.yarnpkg.com/whatwg-fetch/-/whatwg-fetch-3.6.2.tgz#dced24f37f2624ed0281725d51d0e2e3fe677f8c"
+  integrity sha512-bJlen0FcuU/0EMLrdbJ7zOnW6ITZLrZMIarMUVmdKtsGvZna8vxKYaexICWPfZ8qwf9fzNq+UEIZrnSaApt6RA==
 
 which-boxed-primitive@^1.0.2:
   version "1.0.2"
