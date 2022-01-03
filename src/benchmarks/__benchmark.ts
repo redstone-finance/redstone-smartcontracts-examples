@@ -1,5 +1,11 @@
 /* eslint-disable */
-import { Benchmark, LoggerFactory, SmartWeaveNodeFactory } from 'redstone-smartweave';
+import {
+  Benchmark,
+  LoggerFactory, MemCache,
+  RedstoneGatewayContractDefinitionLoader,
+  RedstoneGatewayInteractionsLoader,
+  SmartWeaveNodeFactory
+} from 'redstone-smartweave';
 import Arweave from 'arweave';
 import { readContract } from 'smartweave';
 import { TsLogFactory } from 'redstone-smartweave/lib/cjs/logging/node/TsLogFactory';
@@ -27,10 +33,13 @@ async function benchmark() {
     logging: false // Enable network request logging
   });
 
-  LoggerFactory.use(new TsLogFactory());
-  LoggerFactory.INST.logLevel("error");
+  //LoggerFactory.use(new TsLogFactory());
+  LoggerFactory.INST.logLevel("fatal");
+  LoggerFactory.INST.logLevel("debug", "ArweaveGatewayInteractionsLoader");
+  LoggerFactory.INST.logLevel("debug", "HandlerBasedContract");
+  LoggerFactory.INST.logLevel("debug", "ContractDefinitionLoader");
+  LoggerFactory.INST.logLevel("debug", "CacheableContractInteractionsLoader");
   // setting this module to debug, so that the load times from the GQL endpoint will be visible.
-  LoggerFactory.INST.logLevel("debug", "ContractInteractionsLoader");
 
   const logger = LoggerFactory.INST.create('benchmark');
   LoggerFactory.INST.logLevel("info", "benchmark");
@@ -47,27 +56,34 @@ async function benchmark() {
 
   // note: this contract evaluates for several hours on the original smartweave.js SDK.
   // LppT1p3wri4FCKzW5buohsjWxpJHC58_rgIO-rYTMB8
-  const contractTxId = 'usjm4PCxUd5mtaon7zc97-dt-3qf67yPyqgzLnLqk5A';
+  const contractTxId = 't9T7DIOGxx4VWXoCEeYYarFYeERTpWIC1V3y-BPZgKE';
 
   try {
     const benchmarksV1 = [];
     const benchmarksV2 = [];
 
-    const smartWeave = SmartWeaveNodeFactory.memCached(arweave);
     logger.info("Running benchmarks for contract:", contractTxId);
 
-    for (let i = 1; i <= 5; i++) {
+    for (let i = 1; i <= 1; i++) {
       logger.info(`V1.readContract #${i}`);
       const benchmarkV1 = Benchmark.measure();
-      await readContract(arweave, contractTxId, undefined, true);
+      await readContract(arweave, contractTxId, 749180, true);
       benchmarksV1.push(benchmarkV1.elapsed(true));
 
       logger.info(`V2.readState #${i}`);
+      const smartWeave = SmartWeaveNodeFactory
+        .memCachedBased(arweave, 1)
+        .setInteractionsLoader(
+          new RedstoneGatewayInteractionsLoader("https://gateway.redstone.finance"))
+        .setDefinitionLoader(
+          new RedstoneGatewayContractDefinitionLoader("http://localhost:5666", arweave, new MemCache()))
+        .build();
       const benchmarkV2 = Benchmark.measure();
       await smartWeave.contract(contractTxId)
         .setEvaluationOptions({
-          fcpOptimization: true
-        }).readState();
+          updateCacheForEachInteraction: false
+        })
+        .readState(749180);
       benchmarksV2.push(benchmarkV2.elapsed(true));
     }
 
