@@ -2,7 +2,10 @@
 Example usages of the [SmartWeave V2 SDK](https://github.com/redstone-finance/redstone-smartweave).
 
 ### Installation
-`yarn install`
+`yarn install`  
+or  
+`npm install`   
+
 
 ### Running benchmarks
 We've created 4 different benchmarks that cover different use cases / contract types.
@@ -12,6 +15,14 @@ yarn benchmark:1
 yarn benchmark:2
 yarn benchmark:3
 yarn benchmark:4
+```
+
+or
+```
+npm run benchmark:1
+npm run benchmark:2
+npm run benchmark:3
+npm run benchmark:4
 ```
 
 ### Running Examples
