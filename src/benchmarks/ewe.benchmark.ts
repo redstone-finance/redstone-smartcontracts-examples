@@ -8,7 +8,7 @@ LoggerFactory.INST.logLevel("fatal");
 
 /**
  * This benchmark evaluates 100 first interactions of a fairly simple
- * t9T7DIOGxx4VWXoCEeYYarFYeERTpWIC1V3y-BPZgKE contract.
+ * ewepANKEVffP0cm_XKjwTYhSBqaiQrJbVrCcBiWqw-s contract.
  *
  * It is using RedStone Gateway for loading interactions and contracts data.
  */
@@ -21,8 +21,8 @@ async function main() {
     logging: false // Enable network request logging
   });
 
-  const contractTxId = 't9T7DIOGxx4VWXoCEeYYarFYeERTpWIC1V3y-BPZgKE';
-  const blockHeight = 749180;
+  const contractTxId = 'ewepANKEVffP0cm_XKjwTYhSBqaiQrJbVrCcBiWqw-s';
+  const blockHeight = 808496;
 
   printTestInfo(contractTxId, blockHeight);
   const table = generateCallsTable();

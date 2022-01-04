@@ -28,7 +28,7 @@ async function memCacheClientExample() {
   // connecting to a given contract
   const koiiContract = smartweave.contract(koiiContractTxId)
     .setEvaluationOptions({
-      ignoreExceptions: false
+      ignoreExceptions: false,
     });
 
   const { state, validity } = await koiiContract.readState();
@@ -40,6 +40,11 @@ async function memCacheClientExample() {
   fs.writeFileSync(
     path.join(__dirname, "result", `${koiiContractTxId}_validity.json`),
     JSON.stringify(validity)
+  );
+
+  fs.writeFileSync(
+    path.join(__dirname, "result", `${koiiContractTxId}_trace.json`),
+    koiiContract.getCallStack().print()
   );
 }
 
