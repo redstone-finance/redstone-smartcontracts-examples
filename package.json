@@ -9,7 +9,8 @@
   "scripts": {
     "benchmark:1": "yarn ts-node --transpile-only src/benchmarks/t9T.benchmark.ts",
     "benchmark:2": "yarn ts-node --transpile-only src/benchmarks/Daj.benchmark.ts",
-    "benchmark:3": "yarn ts-node --transpile-only src/benchmarks/Lpp.benchmark.ts"
+    "benchmark:3": "yarn ts-node --transpile-only src/benchmarks/Lpp.benchmark.ts",
+    "benchmark:4": "yarn ts-node --transpile-only src/benchmarks/-8A.benchmark.ts"
   },
   "dependencies": {
     "@kyve/query": "0.0.0-alpha.41",

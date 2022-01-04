@@ -4,6 +4,16 @@ Example usages of the [SmartWeave V2 SDK](https://github.com/redstone-finance/re
 ### Installation
 `yarn install`
 
+### Running benchmarks
+We've created 4 different benchmarks that cover different use cases / contract types.
+Run them with:
+```
+yarn benchmark:1
+yarn benchmark:2
+yarn benchmark:3
+yarn benchmark:4
+```
+
 ### Running Examples
 `yarn ts-node src/<example>.ts`  
 eg: `yarn ts-node src/custom-client-example.ts`
