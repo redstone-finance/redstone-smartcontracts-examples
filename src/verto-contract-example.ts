@@ -1,5 +1,5 @@
 import Arweave from "arweave";
-import { LoggerFactory, SmartWeaveNodeFactory } from 'redstone-smartweave';
+import {LoggerFactory, RedstoneGatewayInteractionsLoader, SmartWeaveNodeFactory} from 'redstone-smartweave';
 import * as fs from "fs";
 import path from "path";
 import { TsLogFactory } from 'redstone-smartweave/lib/cjs/logging/node/TsLogFactory';
@@ -21,8 +21,7 @@ async function memCacheClientExample() {
   // using SmartWeaveNodeFactory to quickly obtain fully configured, mem-cacheable SmartWeave instance
   // see custom-client-example.ts for a more detailed explanation of all the core modules of the SmartWeave instance.
 
-  LoggerFactory.use(new TsLogFactory());
-  LoggerFactory.INST.logLevel('debug');
+  LoggerFactory.INST.logLevel('fatal');
   const smartweave = SmartWeaveNodeFactory.memCached(arweave);
 
   // connecting to a given contract
@@ -31,7 +30,13 @@ async function memCacheClientExample() {
       ignoreExceptions: false
     });
 
-  const { state, validity } = await vertoContract.readState();
+  const swConfirmed = SmartWeaveNodeFactory.memCachedBased(arweave)
+    .setInteractionsLoader(new RedstoneGatewayInteractionsLoader("https://gateway.redstone.finance", {confirmed: true}))
+    .build();
+
+  const { state, validity } = await vertoContract.readState(845641);
+
+  const result = await swConfirmed.contract(vertoContractTxId).readState(845641);
 
   fs.writeFileSync(
     path.join(__dirname, "result", `${vertoContractTxId}_state.json`),
@@ -40,6 +45,10 @@ async function memCacheClientExample() {
   fs.writeFileSync(
     path.join(__dirname, "result", `${vertoContractTxId}_validity.json`),
     JSON.stringify(validity)
+  );
+  fs.writeFileSync(
+    path.join(__dirname, "result", `${vertoContractTxId}_confirmed_state.json`),
+    JSON.stringify(result.state)
   );
 }
 

@@ -49,7 +49,7 @@ export async function readState(
   interactionsFromArweave = false): Promise<BenchmarkStats> {
 
   const builder = SmartWeaveWebFactory
-    .memCachedBased(arweave, 1)
+    .memCachedBased(arweave)
     .setDefinitionLoader(
       new RedstoneGatewayContractDefinitionLoader("https://gateway.redstone.finance", arweave, new MemCache()));
 
