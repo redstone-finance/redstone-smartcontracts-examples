@@ -53,18 +53,17 @@ export async function readState(
   let builder;
   if (fileCache) {
     builder = SmartWeaveNodeFactory
-      .fileCachedBased(arweave, './cache')
+      .fileCachedBased(arweave, './cache');
   } else {
     builder = SmartWeaveWebFactory
-      .memCachedBased(arweave)
+      .memCachedBased(arweave);
   }
-
 
   if (!interactionsFromArweave) {
     builder.setDefinitionLoader(
       new RedstoneGatewayContractDefinitionLoader("https://gateway.redstone.finance", arweave, new MemCache()));
     builder.setInteractionsLoader(
-      new RedstoneGatewayInteractionsLoader("https://gateway.redstone.finance", {confirmed: true}))
+      new RedstoneGatewayInteractionsLoader("https://gateway.redstone.finance", {confirmed: true}));
   }
 
   const smartweave = builder.build();
