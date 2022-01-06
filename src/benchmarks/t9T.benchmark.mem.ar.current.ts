@@ -22,14 +22,15 @@ async function main() {
   });
 
   const contractTxId = 't9T7DIOGxx4VWXoCEeYYarFYeERTpWIC1V3y-BPZgKE';
-  const blockHeight = 749180;
+  const networkinfo = await arweave.network.getInfo();
+  const height = networkinfo.height;
 
-  printTestInfo(contractTxId, blockHeight);
+  printTestInfo(contractTxId, height);
   const table = generateCallsTable();
   const results: BenchmarkStats[] = [];
 
   for (let i = 1; i <= 3; i++) {
-    const result = await readState(contractTxId, blockHeight, arweave, true);
+    const result = await readState(contractTxId, null, arweave, true);
     results.push(result);
 
     table.push(
