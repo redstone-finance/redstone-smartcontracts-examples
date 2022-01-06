@@ -11,8 +11,6 @@ LoggerFactory.INST.logLevel("fatal");
  * t9T7DIOGxx4VWXoCEeYYarFYeERTpWIC1V3y-BPZgKE contract.
  *
  * It is using Arweave for loading interactions and contracts data.
- * 
- * It is using file-based cache.
  */
 async function main() {
   const arweave = Arweave.init({
@@ -24,14 +22,16 @@ async function main() {
   });
 
   const contractTxId = 't9T7DIOGxx4VWXoCEeYYarFYeERTpWIC1V3y-BPZgKE';
-  const blockHeight = 749180;
 
-  printTestInfo(contractTxId, blockHeight);
+  const networkinfo = await arweave.network.getInfo();
+  const height = networkinfo.height;
+
+  printTestInfo(contractTxId, height);
   const table = generateCallsTable();
   const results: BenchmarkStats[] = [];
 
-  for (let i = 1; i <= 10; i++) {
-    const result = await readState(contractTxId, blockHeight, arweave, true, true);
+  for (let i = 1; i <= 3; i++) {
+    const result = await readState(contractTxId, null, arweave, true, true);
     results.push(result);
 
     table.push(

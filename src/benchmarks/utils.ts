@@ -44,7 +44,7 @@ export function generateCallsTable(): Table {
 
 export async function readState(
   contractTxId: string,
-  blockHeight: number,
+  blockHeight: number = null,
   arweave: Arweave,
   interactionsFromArweave = false,
   fileCache = false
@@ -69,7 +69,12 @@ export async function readState(
   const smartweave = builder.build();
 
   const contract = smartweave.contract(contractTxId);
-  await contract.readState(blockHeight);
+  if (blockHeight === null) {
+    await contract.readState();
+  } else {
+    await contract.readState(blockHeight);
+  }
+
 
   return contract.lastReadStateStats();
 }

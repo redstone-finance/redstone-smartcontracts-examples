@@ -13,7 +13,8 @@
     "benchmark:4": "ts-node --transpile-only src/benchmarks/-8A.benchmark.ts",
     "benchmark:5": "ts-node --transpile-only src/benchmarks/t9T.benchmark.mem.ar.ts",
     "benchmark:6": "ts-node --transpile-only src/benchmarks/t9T.benchmark.file.ar.ts",
-    "benchmark:7": "ts-node --transpile-only src/benchmarks/t9T.benchmark.mem.redstonegw.ts"
+    "benchmark:7": "ts-node --transpile-only src/benchmarks/t9T.benchmark.mem.redstonegw.ts",
+    "benchmark:8": "ts-node --transpile-only src/benchmarks/t9T.benchmark.file.ar.current.ts"
   },
   "dependencies": {
     "@kyve/query": "0.0.0-alpha.41",
