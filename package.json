@@ -10,7 +10,9 @@
     "benchmark:1": "ts-node --transpile-only src/benchmarks/ewe.benchmark.ts",
     "benchmark:2": "ts-node --transpile-only src/benchmarks/Daj.benchmark.ts",
     "benchmark:3": "ts-node --transpile-only src/benchmarks/Lpp.benchmark.ts",
-    "benchmark:4": "ts-node --transpile-only src/benchmarks/-8A.benchmark.ts"
+    "benchmark:4": "ts-node --transpile-only src/benchmarks/-8A.benchmark.ts",
+    "benchmark:5": "ts-node --transpile-only src/benchmarks/t9T.benchmark.mem.ar.ts",
+    "benchmark:6": "ts-node --transpile-only src/benchmarks/t9T.benchmark.file.ar.ts"
   },
   "dependencies": {
     "@kyve/query": "0.0.0-alpha.41",

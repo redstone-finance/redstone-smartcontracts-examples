@@ -2,7 +2,7 @@ import os from "os";
 import {
   BenchmarkStats, MemCache,
   RedstoneGatewayContractDefinitionLoader,
-  RedstoneGatewayInteractionsLoader,
+  RedstoneGatewayInteractionsLoader, SmartWeaveNodeFactory,
   SmartWeaveWebFactory
 } from "redstone-smartweave";
 import Arweave from "arweave";
@@ -46,14 +46,23 @@ export async function readState(
   contractTxId: string,
   blockHeight: number,
   arweave: Arweave,
-  interactionsFromArweave = false): Promise<BenchmarkStats> {
+  interactionsFromArweave = false,
+  fileCache = false
+): Promise<BenchmarkStats> {
 
-  const builder = SmartWeaveWebFactory
-    .memCachedBased(arweave)
-    .setDefinitionLoader(
-      new RedstoneGatewayContractDefinitionLoader("https://gateway.redstone.finance", arweave, new MemCache()));
+  let builder;
+  if (fileCache) {
+    builder = SmartWeaveNodeFactory
+      .fileCachedBased(arweave, './cache')
+  } else {
+    builder = SmartWeaveWebFactory
+      .memCachedBased(arweave)
+  }
+
 
   if (!interactionsFromArweave) {
+    builder.setDefinitionLoader(
+      new RedstoneGatewayContractDefinitionLoader("https://gateway.redstone.finance", arweave, new MemCache()));
     builder.setInteractionsLoader(
       new RedstoneGatewayInteractionsLoader("https://gateway.redstone.finance", {confirmed: true}))
   }
