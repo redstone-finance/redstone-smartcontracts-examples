@@ -28,7 +28,7 @@ async function main() {
   const table = generateCallsTable();
   const results: BenchmarkStats[] = [];
 
-  for (let i = 1; i <= 10; i++) {
+  for (let i = 1; i <= 1; i++) {
     const result = await readState(contractTxId, blockHeight, arweave, true);
     results.push(result);
 
