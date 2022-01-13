@@ -23,7 +23,7 @@ import { TsLogFactory } from 'redstone-smartweave/lib/cjs/logging/node/TsLogFact
 async function benchmark() {
   // Using "official" Arweave gateway.
   // You can also try our AWS Cloudfront cache (https://github.com/redstone-finance/redstone-smartweave-contracts/blob/main/docs/CACHE.md)
-  // available here: https://dh48zl0solow5.cloudfront.net
+  // available here: https://arweave.net
   // - to further speed up 'GET' calls to Arweave.
   const arweave = Arweave.init({
     host: 'arweave.net', // Hostname or IP address for a Arweave host

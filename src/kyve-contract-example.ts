@@ -10,7 +10,7 @@ import { TsLogFactory } from 'redstone-smartweave/lib/cjs/logging/node/TsLogFact
  */
 async function memCacheClientExample() {
   const arweave = Arweave.init({
-    host: "dh48zl0solow5.cloudfront.net",
+    host: "arweave.net",
     port: 443,
     protocol: "https",
     timeout: 20000,

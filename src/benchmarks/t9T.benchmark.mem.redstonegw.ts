@@ -22,7 +22,7 @@ async function main() {
   });
 
   const contractTxId = 't9T7DIOGxx4VWXoCEeYYarFYeERTpWIC1V3y-BPZgKE';
-  const blockHeight = 749180;
+  const blockHeight = and;
 
   printTestInfo(contractTxId, blockHeight);
   const table = generateCallsTable();
