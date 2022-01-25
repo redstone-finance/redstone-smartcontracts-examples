@@ -26,10 +26,7 @@ async function memCacheClientExample() {
 
   // connecting to a given contract
   const kyveContract = smartweave
-    .contract(kyveContractTxId)
-    .setEvaluationOptions({
-      fcpOptimization: true
-    });
+    .contract(kyveContractTxId);
 
   const { state, validity } = await kyveContract.readState();
 
