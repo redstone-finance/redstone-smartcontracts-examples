@@ -1,5 +1,5 @@
 import Arweave from "arweave";
-import {LoggerFactory, RedstoneGatewayInteractionsLoader, SmartWeaveNodeFactory} from "redstone-smartweave";
+import {LoggerFactory, RedstoneGatewayInteractionsLoader, sleep, SmartWeaveNodeFactory} from "redstone-smartweave";
 import {readJSON} from './_utils';
 import { TsLogFactory } from "redstone-smartweave/lib/cjs/logging/node/TsLogFactory";
 
@@ -56,6 +56,7 @@ async function bundleExample() {
   });
 
   logger.info("Result from the sequencer", result);
+
   // the new transaction is instantly available - ie. during the state read operation
   const result2 = await token.readState();
 
