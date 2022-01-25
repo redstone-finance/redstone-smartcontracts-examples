@@ -2777,10 +2777,15 @@ rechoir@0.7.0:
   dependencies:
     resolve "^1.9.0"
 
-redstone-smartweave@0.4.18:
-  version "0.4.18"
-  resolved "https://registry.yarnpkg.com/redstone-smartweave/-/redstone-smartweave-0.4.18.tgz#831e7bd84bebc5c2b4ccfb9c1fda38d782c227c5"
-  integrity sha512-EJPmBfeW8eEaPP2U8cB9Zgdwoveu7/z2lVoTHGqGfS0TYetoXzlJEZqEeHzUUJts1p/QbtECSfGIjZp4iKAz3g==
+redstone-isomorphic@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/redstone-isomorphic/-/redstone-isomorphic-1.0.0.tgz#1be8e5e68aaacfe19d4f87153dbc4083dcf38a4d"
+  integrity sha512-F0/hDePYr0SWTzjB1+A6oI64jlsR5Z3bKvHDQ4zYaf++f/MzdgF37CmXeOINt4GJQ60hVBuQBHgpXlo/M4NcsA==
+
+redstone-smartweave@0.4.20:
+  version "0.4.20"
+  resolved "https://registry.yarnpkg.com/redstone-smartweave/-/redstone-smartweave-0.4.20.tgz#d4688c48407ed20f1d90d648286bcd6c7c5610bc"
+  integrity sha512-JM6QBzIYrqVluMEaMw+m/1L+n+30iNUmt+FwJLd6KQc3CmzjwZ8YPkitTDSzWDUk/n/yIWEJPjD8oR8Gq+2R5g==
   dependencies:
     "@weavery/clarity" "^0.1.5"
     arweave "^1.10.16"
@@ -2790,6 +2795,7 @@ redstone-smartweave@0.4.18:
     json-beautify "^1.1.1"
     knex "^0.95.14"
     lodash "^4.17.21"
+    redstone-isomorphic "^1.0.0"
     tslog "^3.2.2"
     undici "^4.12.1"
 
