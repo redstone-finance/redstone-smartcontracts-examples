@@ -57,6 +57,8 @@ async function bundleExample() {
 
   logger.info("Result from the sequencer", result);
 
+  await sleep(1000); // gateway cache TTL
+
   // the new transaction is instantly available - ie. during the state read operation
   const result2 = await token.readState();
 
