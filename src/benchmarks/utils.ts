@@ -68,11 +68,8 @@ export async function readState(
 
   const smartweave = builder.build();
 
-  const contract = smartweave.contract(contractTxId).setEvaluationOptions(
-    {
-      useFastCopy: true
-    }
-  );
+  const contract = smartweave.contract(contractTxId);
+
   if (blockHeight === null) {
     await contract.readState();
   } else {
